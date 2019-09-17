@@ -1,0 +1,7 @@
+{
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules"
+    ]
+  }
+}

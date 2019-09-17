@@ -1,0 +1,48 @@
+{
+  "name": "cole",
+  "version": "1.0.0",
+  "description": "organized topic/list app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sea-pandas/cole.git"
+  },
+  "author": "Haris Hambasic, Soroush Alimardani, Danny Byrne, Alexander Diep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sea-pandas/cole/issues"
+  },
+  "homepage": "https://github.com/sea-pandas/cole#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.4.2",
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "dotenv": "^8.1.0",
+    "enzyme": "^3.10.0",
+    "jest": "^24.9.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "supertest": "^4.0.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.1"
+  }
+}
