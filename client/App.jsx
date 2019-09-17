@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Login from './components/Login.jsx'
 
-class App {
+class App extends Component {
   constructor(props){
+    super(props)
     this.state = {
 
     }
@@ -17,10 +19,10 @@ class App {
 
   render(){
     return <div>
-      Hello World
+      <Login />
     </div>
   }
-
+  
 }
 
 export default App;
