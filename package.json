@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server",
-    "build": "webpack"
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "build": "NODE_ENV=production webpack",
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "bcrypt": "^3.0.6",
-    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "pg": "^7.12.1",
     "react": "^16.9.0",

@@ -1,26 +1,8 @@
 import React, { Component } from 'react';
+import Login from './components/Login.jsx'
 
-class App {
-  constructor(props){
-    this.state = {
-
-    }
-  }
-
-  componentDidMount(){
-
-  }
-
-  componentDidUpdate(){
-
-  }
-
-  render(){
-    return <div>
-      Hello World
-    </div>
-  }
-
+export default () => {
+  return <div>
+    <Login />
+  </div>
 }
-
-export default App;

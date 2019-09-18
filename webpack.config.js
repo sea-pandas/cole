@@ -5,14 +5,15 @@ module.exports = {
     index: './client/index.js'
   },
   output: {
-    path: path.resolve(__dirname, '/build'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
   },
   devServer: {
-    publicPath: '/build',
+    publicPath: '/build/',
     proxy: {
       '/api': 'http://localhost:3000'
-    }
+    },
+    port: 8080
   },
   mode: process.env.NODE_ENV,
   module: {
