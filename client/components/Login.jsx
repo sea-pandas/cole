@@ -17,23 +17,24 @@ export default () => {
   }
   
   function handleLogin(username, password) {
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        "Content-Type": /application\/json/
-      },
-      body: {
-        username,
-        password
-      }
-    })
-    .then(res => res.json)
-    .then(res => {
-      res
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    // fetch('/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": /application\/json/
+    //   },
+    //   body: {
+    //     username,
+    //     password
+    //   }
+    // })
+    // .then(res => res.json)
+    // .then(res => {
+    //   res
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    // })
+    // 
   }
 
   function handleSignup (username, password) {
