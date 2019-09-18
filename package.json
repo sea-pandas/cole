@@ -20,6 +20,7 @@
   "homepage": "https://github.com/sea-pandas/cole#readme",
   "dependencies": {
     "@material-ui/core": "^4.4.2",
+    "animate.css": "^3.7.2",
     "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "pg": "^7.12.1",
