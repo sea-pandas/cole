@@ -1,9 +1,11 @@
-import React from 'react';
-import Header from './Header.jsx'
-import Organizations from './Organizations.jsx'
+import React from 'react'
+import Topics from './Topics.jsx'
+import Items from './Items.jsx'
 
 
 export default (props) => {
-  <Header />
-  <Organizations />
+  return <div>
+    <Topics />
+    <Items {...props}/>
+  </div>
 }
