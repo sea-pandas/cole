@@ -2,10 +2,9 @@ import React from 'react';
 import Item from './Item.jsx'
 
 export default (props) => {
-  console.log(props)
   return <div>
     <ul>
-      {props.general.map((el, idx) => <Item key={idx} title={el.title}/>)}
+      {props.items.map((el, idx) => <Item key={idx} name={el.name}/>)}
     </ul>
   </div>
 }
