@@ -1,10 +1,7 @@
-
 const bcrypt = require('bcryptjs');
-const pool = require('../models/requestModel');
-
-const SALT_WORK_FACTOR = 10;
-let salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
-
+const pool = require('../models/requestModel');  
+const SALT_ROUNDS = 10;
+const salt = bcrypt.genSaltSync(SALT_ROUNDS);
 
 const userController = {};
 

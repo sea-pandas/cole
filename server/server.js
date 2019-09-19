@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config()
 const messageModel = require('./models/requestModel');
 const userController = require('./user/userController');
+const { postItem, getItem } = require('./controllers/taskController');
 
 app.use(bodyParser.json());
 
@@ -23,6 +24,17 @@ app.post('/signup', userController.signup, (req, res) => {
 
 
 // app.use(express.static('client'));
+
+
+
+app.post('/items', postItem, (req, res) => {
+    res.send('item successfully posted')
+});
+
+app.get('/items', getItem, (req, res) => {
+    res.status(200).json(res.locals.items)
+});
+
 
 
 app.listen(3434, () => console.log('listening on Port 3434'));
