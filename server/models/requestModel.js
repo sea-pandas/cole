@@ -1,8 +1,9 @@
-const URI = process.env.PG_URI;
+const URI = process.env.PG_URI
 
 const { Pool } = require ('pg');
 const pool = new Pool ({
   connectionString: URI});
+// const query = 'ALTER ROLE atsdlbbl CONNECTION LIMIT -1;'
 
 // const queryString1 = `CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY,
 // username varchar(255) NOT NULL UNIQUE,password varchar(255) NOT NULL);`

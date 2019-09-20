@@ -7,50 +7,61 @@ const userController = {};
 
 userController.verify = (req,res,next) => {
   //query database for user, if not exists, send res()
-  console.log('inside the usercController.verify route')
-  let pass = bcrypt.genSaltSync(req.body.pass, salt);
-  let user = [req.body.username];
-  let userExists = false;
-  let passExists = false;
-  let userQ = 'SELECT EXISTS (SELECT 1 from users where (username) = ($1));';
-  let passQ = 'SELECT EXISTS (SELECT 2 from users where (username, password) = ($1, $2));';
-  //if user exists but password is incorrect, res.send('username or password was incorrect)
-  //if user not found, send to login
-  if(pool.query(userQ, user)){
-    userExists = true;
-    //only check pass if username exists
-    if(pool.query(passQ, [user, pass])){
-      passExists = true;
+  let pass = bcrypt.hashSync(req.body.password, salt);
+  // let pass = req.body.password;
+  console.log('pass is', pass)
+  let creds = [req.body.username, pass]
+  let credentials = false;
+  let passQ = 'SELECT EXISTS (SELECT 2 from users where (username, password) = ($1, $2));'
+  pool.query(passQ, creds)
+    .then((res) => {
+    console.log('querying the db for credentials, res is', res);
+    credentials = res.rows[0].exists;
+    console.log('credentials is', credentials )
+  }).then(()=> {
+    console.log('credentials is stilllll', credentials)
+    if(credentials){
+      return res.send('successfully logged in');
+      next() 
     } else {
-      return res.send('username or password was incorrect')
+      return res.send('your username or password were incorrect')
     }
-  } else {
-    return res.send('username or password was incorrect')
-  }
-  if(userExists && passExists){
-    next();
-  }
+  })
 }
 
 
 userController.signup = (req, res, next) => {
-  console.log('inside the userController.signup route')
-  // let pass = bcrypt.hashSync(req.body.password, salt);
-  let pass = req.body.pass;
+  let pass = bcrypt.hashSync(req.body.password, salt);
+  // let pass = req.body.password;
   let data = [req.body.username, pass];
   //if user already exists, send 'username is taken'
   let userQ = 'SELECT EXISTS (SELECT 1 from users where (username) = ($1));';
   let iQuery = 'INSERT INTO users (username, password) VALUES ($1, $2);';
-  // console.log(pool.query(userQ, [req.body.username]))
-  //else query the pool with the un/pw insertion into users
-  pool.query(iQuery, data, (err, res) => {
-    if(err){
-      next(err);
-    } else {
-      console.log("success creating new user");
-    }
-    return next();
+  let found;
+  // const found = pool.query(userQ, [req.body.username]);
+  // console.log('checking', pool.query(userQ, [req.body.username]));
+
+  // const promise = Promise.resolve(pool.query(userQ, [req.body.username]));
+  // console.log("promise is", promise);
+  pool.query(userQ, [req.body.username]).then(res => {
+    console.log('res is', res)
+    found = res.rows[0].exists;
+    console.log('found is', found, 'type of is', typeof found)
   })
+  //if found is false(user not found, sign up)
+  if(found){
+    return res.send('That username is already taken')
+  } else {
+    // else query the pool with the insertion into users
+    pool.query(iQuery, data, (err, res) => {
+      if(err){
+        return next(err);
+      } else {
+        console.log("success creating new user");
+      }
+      return next();
+    })
+  }  
 }
 
 module.exports = userController;

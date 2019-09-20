@@ -13,25 +13,29 @@ app.use(bodyParser.json());
 //will give req.cookies
 app.use(cookieParser());
 
-// app.use(express.static('client'));
-
-app.post('/login', userController.verify,  (req, res) => {
-  console.log('user is trying to login')
-
-  res.status(200);
+app.post('/login', userController.verify, (req, res) => {
+  res.send('sucessfully logged in');
 })
 
 app.post('/signup', userController.signup, (req, res) => {
-  console.log('user is trying to sign')
-  res.send('user succesfully signed up');
+  res.send('successfully signed up')
 })
 
+
+
+// app.use(express.static('client'));
+
+//api/items
+//body { topic : id(integer)}
+//get everything from items from a specific topic id
+//instead of having a user_id, replace user_id with username
 
 app.post('/items', postItem, (req, res) => {
     res.send('item successfully posted')
 });
 
 app.get('/items', getItem, (req, res) => {
+  console.log('gettin us some items, yee haw!!!')
     res.status(200).json(res.locals.items)
 });
 
