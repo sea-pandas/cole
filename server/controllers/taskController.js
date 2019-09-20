@@ -34,7 +34,7 @@ module.exports = {
     },
 
     getItem(req, res, next) {
-        let id = [req.body.topics_id];
+        let id = [req.query.topics_id];
         // const queryString = `SELECT * FROM items`;
         const q = `SELECT items.id, items.name, items.description, items.vote, items.topics_id, users.username FROM items  INNER JOIN users ON items.users_id = users.id WHERE topics_id = ($1);`
 
@@ -44,6 +44,10 @@ module.exports = {
 					res.locals = result.rows;
 					return next();
 				})
+    },
+
+    getTopics(req, res, next) {
+
     },
 
 

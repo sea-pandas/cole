@@ -31,19 +31,19 @@ export default () => {
 
   const dbTopics = [
     {
-      id: 1,
+      id: 4,
       org_id: 1,
       name: 'general',
       description: 'Codesmith general stuff'
     },
     {
-      id: 2,
+      id: 5,
       org_id: 1,
       name: 'maintainence',
       description: 'Codesmith maintaining stuff'
     },
     {
-      id: 3,
+      id: 6,
       org_id: 1,
       name: 'grocery',
       description: 'Codesmith shopping stuff'
@@ -98,15 +98,7 @@ export default () => {
 
     // for fetching and updating items with new stuff
 
-    fetch('/items', {
-      method: 'GET',
-      headers: {
-        'Content-Type': /application\/json/
-      },
-      body: {
-        topics_id
-      }
-    })
+    fetch(`/items?topics_id=${topics_id}`)
     .then(res => res.json())
     .then(res => setItems(res))
     .catch(e=>console.log(e))

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config()
 const messageModel = require('./models/requestModel');
 const userController = require('./user/userController');
-const { postItem, getItem } = require('./controllers/taskController');
+const { postItem, getItem, getTopics } = require('./controllers/taskController');
 
 app.use(bodyParser.json());
 
@@ -23,6 +23,7 @@ app.post('/signup', userController.signup, (req, res) => {
 
 
 
+
 // app.use(express.static('client'));
 
 // /items
@@ -31,15 +32,18 @@ app.post('/signup', userController.signup, (req, res) => {
 // instead of having a user_id, replace user_id with username
 // everything in items except user_id, replaced by username
 
-app.post('/items', postItem, (req, res) => {
-    res.json(res.locals)
+app.post('/api/items', postItem, (req, res) => {
+  res.json(res.locals)
 });
 
-app.get('/items', getItem, (req, res) => {
+app.get('/items?topics_id', getItem, (req, res) => {
   console.log('gettin us some items, yee haw!!!')
-    res.status(200).json(res.locals.items)
+  res.status(200).json(res.locals.items)
 });
 
+// app.get('/api/topics', getTopics, (req, res) => {
+
+// })
 
 
 app.listen(3434, () => console.log('listening on Port 3434'));
