@@ -25,13 +25,17 @@ app.post('/signup', userController.signup, (req, res) => {
 
 // app.use(express.static('client'));
 
-
+//api/items
+//body { topic : id(integer)}
+//get everything from items from a specific topic id
+//instead of having a user_id, replace user_id with username
 
 app.post('/items', postItem, (req, res) => {
     res.send('item successfully posted')
 });
 
 app.get('/items', getItem, (req, res) => {
+  console.log('gettin us some items, yee haw!!!')
     res.status(200).json(res.locals.items)
 });
 
