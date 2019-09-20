@@ -1,11 +1,10 @@
 import React from 'react';
+import Item from './Item.jsx'
 
-/**
- * Items will contain a list of items
- * prop types: a list of a specified topic's items (always defaults to the first topic added), with all its keys
- */
 export default (props) => {
-  return <div className="items">
-
+  return <div>
+    <ul>
+      {props.items.map((el, idx) => <Item key={idx} name={el.name} description={el.description} vote={el.vote} username={el.username} />)}
+    </ul>
   </div>
 }
